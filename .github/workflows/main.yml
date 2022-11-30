@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: Download plugin
         uses: actions/download-artifact@v2
+      - name: Determine tag
+        run:  "echo \"RELEASE_TAG=${GITHUB_REF#refs/tags/}\" >> $GITHUB_ENV"
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
